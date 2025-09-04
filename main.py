@@ -14,3 +14,10 @@ def get_next_guess(M, y, x):
     # This function will generate the next guess and will be used in both the Jacobi and
     # Gauss-Seidel methods.
     return (M @ x) + y
+
+def main():
+    # We will write all the matrices and vectors calculated in advance
+    x_initial = np.array([[0], [0], [0]])
+
+    y_j = np.array([[3], [3], [-6]])
+    y_gs = np.array([[3], [-3], [6]])
