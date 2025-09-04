@@ -5,8 +5,9 @@
 
 # Using the Jacobi and Gauss-seidel Methods.
 # We Know that this methods can be viewed as x^(k+1) = M*x^k + y
-# And we know the formulas for computing M for the said methods.
-# we denote M_j as the matrix of the Jacobi method and M_gs for the Gauss-Seidel method
+# And we know the formulas for computing M and y for the said methods.
+# we denote M_j and y_j as the matrix of the Jacobi method and M_gs and y_gs for the
+# Gauss-Seidel method
 import numpy as np
 
 def get_next_guess(M, x):
