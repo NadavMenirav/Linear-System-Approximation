@@ -18,12 +18,26 @@ def get_next_guess(M, y, x):
 def main():
     # We will write all the matrices and vectors calculated in advance
     x_initial = np.array([[0], [0], [0]])
+    x_current = x_initial
 
     y_j = np.array([[3], [3], [-6]])
     y_gs = np.array([[3], [-3], [6]])
 
     M_j = np.array([[0, -2, 1], [-2, 0, 2], [3, -1, 0]])
     M_gs = np.array([[0, -2, 1], [0, 4, 0], [0, -10, 3]])
+
+    # Now we calculate with Jacobi method:
+    print("Jacobi method")
+    for i in range (10):
+        print("The guess is " + str(x_current))
+        guess = get_next_guess(M_j, y_j, x_current)
+        x_new = get_next_guess(M_j, y_j, x_current)
+        x_current = x_new
+    print("Final guess: " + str(x_current))
+
+
+
+
 
 
 if __name__ == "__main__":
