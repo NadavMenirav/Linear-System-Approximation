@@ -10,7 +10,7 @@
 # Gauss-Seidel method
 import numpy as np
 
-def get_next_guess(M, x):
+def get_next_guess(M, y, x):
     # This function will generate the next guess and will be used in both the Jacobi and
     # Gauss-Seidel methods.
-    x_new = np.array
+    return (M @ x) + y
