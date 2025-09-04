@@ -29,20 +29,20 @@ def main():
     # Now we calculate with Jacobi method:
     print("Jacobi method")
     for i in range (10):
-        print("The guess is " + str(x_current))
+        print("The guess is\n " + str(x_current))
         x_new = get_next_guess(M_j, y_j, x_current)
         x_current = x_new
-    print("Final guess: " + str(x_current))
+    print("Final guess:\n " + str(x_current))
 
     x_current = x_initial
 
     # Now we calculate with Gauss-Seidel method
     print("Gauss-Seidel method")
     for i in range (10):
-        print("The guess is " + str(x_current))
+        print("The guess is\n " + str(x_current))
         x_new = get_next_guess(M_gs, y_gs, x_current)
         x_current = x_new
-    print("Final guess: " + str(x_current))
+    print("Final guess:\n " + str(x_current))
 
 
 
