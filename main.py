@@ -9,6 +9,8 @@
 # we denote M_j and y_j as the matrix of the Jacobi method and M_gs and y_gs for the
 # Gauss-Seidel method
 import numpy as np
+import matplotlib.pyplot as plt
+
 
 def get_next_guess(M, y, x):
     # This function will generate the next guess and will be used in both the Jacobi and
@@ -20,31 +22,54 @@ def main():
     x_initial = np.array([[0], [0], [0]])
     x_current = x_initial
 
+    # The linear system
+    A = np.array([[1, 2, -1], [2, 1, -2], [-3, 1, 1]])
+    b = np.array([[3], [3], [-6]])
+
+
     y_j = np.array([[3], [3], [-6]])
     y_gs = np.array([[3], [-3], [6]])
 
     M_j = np.array([[0, -2, 1], [-2, 0, 2], [3, -1, 0]])
     M_gs = np.array([[0, -2, 1], [0, 4, 0], [0, -10, 3]])
 
+    x_actual = np.linalg.solve(A, b)
+
     # Now we calculate with Jacobi method:
+    errors_jacobi = []
     print("Jacobi method")
     for i in range (10):
         print("The guess is\n " + str(x_current))
         x_new = get_next_guess(M_j, y_j, x_current)
+        error = np.linalg.norm(x_current - x_actual, 2)
+        errors_jacobi.append(error)
         x_current = x_new
     print("Final guess:\n " + str(x_current))
 
     x_current = x_initial
 
     # Now we calculate with Gauss-Seidel method
+    errors_gs = []
     print("Gauss-Seidel method")
     for i in range (10):
         print("The guess is\n " + str(x_current))
         x_new = get_next_guess(M_gs, y_gs, x_current)
+        error = np.linalg.norm(x_current - x_actual, 2)
+        errors_gs.append(error)
         x_current = x_new
     print("Final guess:\n " + str(x_current))
 
 
+    # Displaying the graph that compares the rate of divergence
+
+    plt.semilogy(errors_jacobi, label="Jacobi")
+    plt.semilogy(errors_gs, label="Gauss-Seidel")
+    plt.xlabel("Iteration")
+    plt.ylabel("Error (log scale)")
+    plt.title("Comparison of divergence rate")
+    plt.legend()
+    plt.grid(True)
+    plt.show()
 
 
 
